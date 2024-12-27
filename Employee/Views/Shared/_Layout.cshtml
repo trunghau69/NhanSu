@@ -1,0 +1,62 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor _httpContextAccessor;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Employee</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Employee.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/layoutuser.css" />
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+
+            <ul class="navbar-nav ml-auto">
+
+                <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+
+                <div class="topbar-divider d-none d-sm-block"></div>
+                <li class="nav-item dropdown no-arrow">
+                    @if (!_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-link dropdown-toggle" asp-area="" asp-controller="Home" asp-action="Login">
+                            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                            <div class="navbar-tool-text ms-n3">Đăng Nhập</div>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="nav-link dropdown-toggle" asp-area="" asp-controller="NguoiDungChung" asp-action="Index">
+                            <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-user"></i></div>
+                            <div class="navbar-tool-text ms-n3" style="font-weight: 700;color: slategray;">
+                                @_httpContextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "TenDangNhap")?.Value
+                            </div>
+                        </a>
+                    }
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

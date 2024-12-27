@@ -1,0 +1,108 @@
+﻿@model Employee.Models.Luong
+
+@{
+    ViewData["Title"] = "Thêm Mới Lương";
+}
+
+<div class="container mt-5">
+    <h5 class="card-header text-center">@ViewData["Title"]</h5>
+
+    <form asp-action="ThemMoi" method="post" class="w-50 mx-auto">
+        <!-- Nhân viên -->
+        <div class="form-group">
+            <label asp-for="NhanVienID" class="font-weight-bold">Nhân Viên</label>
+            <select asp-for="NhanVienID" asp-items="ViewBag.NhanVienID" class="form-control">
+                <option value="">-- Chọn nhân viên --</option>
+            </select>
+            <span asp-validation-for="NhanVienID" class="text-danger"></span>
+        </div>
+
+        <!-- Tháng nhận lương -->
+        <div class="form-group">
+            <label asp-for="ThangNhanID" class="font-weight-bold">Tháng Nhận</label>
+            <input asp-for="ThangNhanID" class="form-control" placeholder="Nhập tháng nhận lương..." />
+            <span asp-validation-for="ThangNhanID" class="text-danger"></span>
+        </div>
+
+        <!-- Lương cơ bản -->
+        <div class="form-group">
+            <label asp-for="LuongCoBanID" class="font-weight-bold">Lương Cơ Bản</label>
+            <input asp-for="LuongCoBanID" class="form-control" placeholder="Nhập lương cơ bản..." />
+            <span asp-validation-for="LuongCoBanID" class="text-danger"></span>
+        </div>
+
+
+
+        <!-- Lý do khoản trừ -->
+        <div class="form-group">
+            <label asp-for="LyDoKyLuatID" class="font-weight-bold">Lý Do Kỷ Luật</label>
+            <select asp-for="LyDoKyLuatID" asp-items="ViewBag.LyDoKyLuatID" class="form-control">
+                <option value="">-- Chọn lý do --</option>
+            </select>
+            <span asp-validation-for="LyDoKyLuatID" class="text-danger"></span>
+        </div>
+
+        <!-- Số tiền phạt -->
+        <div class="form-group">
+            <label asp-for="KyLuatID" class="font-weight-bold">Số Tiền Phạt</label>
+            <select asp-for="KyLuatID" asp-items="ViewBag.KyLuatID" class="form-control">
+                <option value="">-- Chọn tiền phạt --</option>
+            </select>
+            <span asp-validation-for="KyLuatID" class="text-danger"></span>
+        </div>
+
+        <!-- Lý do khen thưởng -->
+        <div class="form-group">
+            <label asp-for="LyDoKhenThuongID" class="font-weight-bold">Lý Do Khen Thưởng</label>
+            <select asp-for="LyDoKhenThuongID" asp-items="ViewBag.LyDoKhenThuongID" class="form-control">
+                <option value="">-- Chọn lý do--</option>
+            </select>
+            <span asp-validation-for="LyDoKhenThuongID" class="text-danger"></span>
+        </div>
+
+        <!-- Số tiền thưởng -->
+        <div class="form-group">
+            <label asp-for="KhenThuongID" class="font-weight-bold">Số Tiền Thưởng</label>
+            <select asp-for="KhenThuongID" asp-items="ViewBag.KhenThuongID" class="form-control">
+                <option value="">-- Chọn tiền thưởng --</option>
+            </select>
+            <span asp-validation-for="KhenThuongID" class="text-danger"></span>
+        </div>
+        <!-- Tổng thu nhập -->
+        <div class="form-group">
+            <label asp-for="TongThuNhap" class="font-weight-bold">Tổng Thu Nhập</label>
+            <input asp-for="TongThuNhap" class="form-control" placeholder="Nhập tổng thu nhập..." />
+            <span asp-validation-for="TongThuNhap" class="text-danger"></span>
+        </div>
+
+        <!-- Ngày thanh toán -->
+        <div class="form-group">
+            <label asp-for="NgayThanhToan" class="font-weight-bold">Ngày Thanh Toán</label>
+            <input asp-for="NgayThanhToan" type="date" class="form-control" />
+            <span asp-validation-for="NgayThanhToan" class="text-danger"></span>
+        </div>
+        <!-- Tình trạng lương -->
+        <div class="mb-3">
+            <label asp-for="TinhTrangLuong" class="control-label"></label>
+            <select asp-for="TinhTrangLuong" class="form-control">
+                <option value="">-- Chọn trạng thái lương --</option>
+                <option value="DaThanhToan">Đã Thanh Toán</option>
+                <option value="ChuaThanhToan">Chưa Thanh Toán</option>
+            </select>
+            <span asp-validation-for="TinhTrangLuong" class="text-danger"></span>
+        </div>
+
+
+        <!-- Nút thao tác -->
+        <div class="form-group">
+            <button type="submit" class="btn btn-success me-2">Thêm Mới</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay Lại</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

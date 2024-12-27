@@ -1,0 +1,39 @@
+﻿@model Employee.Models.ChucVu
+
+
+@{
+    ViewData["Title"] = "Cập Nhật Chức Vụ";
+}
+<div class="card">
+    <h5 class="card-header text-center">@ViewData["Title"] </h5>
+    <div class="card-body">
+        <form asp-action="Sua" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="mb-3">
+                <label asp-for="MaChucVu" class="control-label"></label>
+                <input asp-for="MaChucVu" class="form-control" />
+                <span asp-validation-for="MaChucVu" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="TenChucVu" class="control-label"></label>
+                <input asp-for="TenChucVu" class="form-control" />
+                <span asp-validation-for="TenChucVu" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="MoTa" class="control-label"></label>
+                <textarea asp-for="MoTa" class="form-control"></textarea>
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group ">
+                <button type="submit" class="btn btn-success me-2">Lưu</button>
+                <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

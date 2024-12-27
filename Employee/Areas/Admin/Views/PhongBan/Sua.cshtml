@@ -1,0 +1,29 @@
+﻿@model Employee.Models.PhongBan
+@{
+    ViewData["Title"] = "Cập Nhật Phòng Ban";
+}
+<div class="container mt-5">
+    <h5 class="card-header text-center">@ViewData["Title"] </h5>
+
+    <form asp-action="Sua" method="post">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label for="MaPhongBan" class="font-weight-bold">Mã Phòng Ban</label>
+            <input asp-for="MaPhongBan" class="form-control" placeholder="Nhập mã phòng ban..." />
+            <span asp-validation-for="MaPhongBan" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="TenPhongBan" class="font-weight-bold">Tên Phòng Ban</label>
+            <input asp-for="TenPhongBan" class="form-control" placeholder="Nhập tên phòng ban..." />
+            <span asp-validation-for="TenPhongBan" class="text-danger"></span>
+        </div>
+
+        <div class="form-group ">
+            <button type="submit" class="btn btn-success me-2">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </form>
+</div>
+

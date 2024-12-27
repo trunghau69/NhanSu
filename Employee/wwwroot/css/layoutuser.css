@@ -1,0 +1,65 @@
+﻿
+body {
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ffffff, #f1f8ff);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .card .custom-icon {
+        font-size: 40px;
+        margin-bottom: 15px;
+        color: #1976d2;
+    }
+
+.card-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+h3 {
+    color: #0d47a1;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+/* Tùy chỉnh cho hover icon */
+.card:hover .custom-icon {
+    color: #ff6f00;
+    transform: rotate(10deg);
+    transition: transform 0.5s, color 0.5s;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #0d47a1;
+}
+
+.navbar-brand, .nav-link, .dropdown-item {
+    color: #fff !important;
+}
+
+.dropdown-menu {
+    background-color: #0d47a1;
+}
+
+.dropdown-item:hover {
+    background-color: #1976d2;
+}
+

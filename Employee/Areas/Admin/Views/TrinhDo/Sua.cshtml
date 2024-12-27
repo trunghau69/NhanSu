@@ -1,0 +1,28 @@
+﻿@model Employee.Models.TrinhDo
+@{
+    ViewData["Title"] = "Cập Nhật Trình Độ";
+}
+<div class="container mt-5">
+    <h5 class="card-header text-center">@ViewData["Title"] </h5>
+
+    <form asp-action="Sua" method="post">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+        <div class="form-group">
+            <label for="MaTrinhDo" class="font-weight-bold">Mã Trình Độ</label>
+            <input asp-for="MaTrinhDo" class="form-control" placeholder="Nhập mã trình độ..." />
+            <span asp-validation-for="MaTrinhDo" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="TenTrinhDo" class="font-weight-bold">Tên chuyên ngành</label>
+            <input asp-for="TenTrinhDo" class="form-control" placeholder="Nhập tên trình độ..." />
+            <span asp-validation-for="TenTrinhDo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group ">
+            <button type="submit" class="btn btn-success me-2">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </form>
+</div>

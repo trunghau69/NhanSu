@@ -1,0 +1,40 @@
+﻿@model Employee.Models.DangNhap
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Đăng Nhập</h2>
+        <form asp-action="Login" method="post">
+            <input type="hidden" asp-for="LienKetChuyenTrang" value="@ViewBag.LienKetChuyenTrang" />
+            <div class="input-group">
+                <input asp-for="TenDangNhap" class="form-control form-control-user"
+                       id="exampleInputEmail" aria-describedby="emailHelp"
+                       placeholder="Tên Đăng Nhập" required>
+            </div>
+            <div class="input-group">
+                <input asp-for=" MatKhau" class="form-control form-control-user"
+                       id="exampleInputPassword" placeholder="Mật Khẩu" required>
+            </div>
+            <!-- Sửa lại phần checkbox Nhớ mật khẩu -->
+            <div class="form-group d-flex align-items-center">
+                <input type="checkbox" asp-for="DuyTriDangNhap" class="custom-control-input">
+                <label class="form-check-label ml-2" for="rememberMe" style="margin-left: 5px;">Nhớ mật khẩu</label>
+            </div>
+            <button type="submit" class="btn">Đăng Nhập</button>
+        </form>
+        <a href="#" class="forgot-password">Quên mật khẩu?</a>
+    </div>
+
+</body>
+</html>

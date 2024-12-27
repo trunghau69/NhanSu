@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Employee.Models.KhenThuong>
+@{
+    ViewBag.Title = "Khen Thưởng";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+    <div class="mb-3">
+        <h1 class="page-header text-center">@ViewBag.Title</h1>
+    </div>
+</div>
+
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="card shadow-lg">
+        <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
+            <!-- Nút thêm mới -->
+            <div class="d-flex justify-content-start">
+                <a asp-area="Admin" asp-controller="KhenThuong" asp-action="ThemMoi" class="btn btn-success btn-sm" style="padding: 2.5px 8px; font-size: 12px;">
+                    <i class="fa fa-plus"></i> Thêm Mới
+                </a>
+            </div>
+        </div>
+
+        <div class="card-body p-0">
+            <table class="table table-hover table-striped table-bordered mb-0">
+                <thead class="table-primary">
+                    <tr>
+                        <th class="text-center align-middle" style="width: 5%;">STT</th>
+                        <th class="text-center align-middle" style="width: 15%;">Mã Khen Thưởng</th>
+                        <th class="text-center align-middle" style="width: 20%;">Lý Do</th>
+                        <th class="text-center align-middle" style="width: 20%;">Tiền Thưởng</th>
+
+                        <th class="text-center align-middle" style="width: 15%;">Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        var i = 1;
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center align-middle">@i</td>
+                                <td class="text-center align-middle">@item.MaKhenThuong</td>
+                                <td class="text-center align-middle">@item.LyDoKhenThuong</td>
+                                <td class="text-center align-middle">@item.TienThuong</td>
+                                <td class="text-center align-middle">
+                                    <a asp-area="Admin" asp-controller="KhenThuong" asp-action="Sua" asp-route-id="@item.ID"
+                                       class="btn btn-warning btn-sm me-1">
+                                        <i class="fa fa-pencil-square-o me-1" aria-hidden="true"></i>Sửa
+                                    </a>
+                                    <a asp-area="Admin" asp-controller="KhenThuong" asp-action="Xoa" asp-route-id="@item.ID"
+                                       class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash-o me-1" aria-hidden="true"></i>Xóa
+                                    </a>
+                                </td>
+                            </tr>
+                            i++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td class="text-center" colspan="6">Không có bản ghi nào!</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+

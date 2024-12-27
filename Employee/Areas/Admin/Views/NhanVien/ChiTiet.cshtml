@@ -1,0 +1,82 @@
+﻿@model Employee.Models.NhanVien
+
+@{
+    ViewData["Title"] = "Chi Tiết Nhân Viên";
+}
+
+<div class="card">
+    <h5 class="card-header">@ViewData["Title"]</h5>
+    <div class="card-body">
+        <div class="row">
+            <!-- Cột trái -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Hình Ảnh</label>
+                    <img src="~/uploads/@Model.HinhAnh" class="img-thumbnail" width="120px" />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mã Nhân Viên</label>
+                    <div class="form-control">@Model.MaNhanVien</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Tên Nhân Viên</label>
+                    <div class="form-control">@Model.TenNhanVien</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Giới Tính</label>
+                    <div class="form-control">@Model.GioiTinh</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Nơi Ở</label>
+                    <div class="form-control">@Model.NoiO</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Số Điện Thoại</label>
+                    <div class="form-control">@Model.SDT</div>
+                </div>
+                
+            </div>
+
+            <!-- Cột phải -->
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label class="form-label">Chức Vụ</label>
+                    <div class="form-control">@Model.ChucVu?.TenChucVu</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Chuyên Ngành</label>
+                    <div class="form-control">@Model.ChuyenNganh?.TenChuyenNganh</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Phòng Ban</label>
+                    <div class="form-control">@Model.PhongBan?.TenPhongBan</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Trình Độ</label>
+                    <div class="form-control">@Model.TrinhDo?.TenTrinhDo</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ngày Sinh</label>
+                    <div class="form-control">@Model.NgaySinh.ToString("dd/MM/yyyy")</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Quốc Tịch</label>
+                    <div class="form-control">@Model.QuocTich</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Dân Tộc</label>
+                    <div class="form-control">@Model.DanToc</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Quê Quán</label>
+                    <div class="form-control">@Model.QueQuan</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút hành động -->
+        <div class="d-flex justify-content-end mt-4">
+            <a asp-action="Index" class="btn btn-secondary">Quay về danh sách</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+﻿@model Employee.Models.KyLuat
+@{
+    ViewData["title"] = "Cập Nhật Kỷ Luật";
+}
+
+<div class="container mt-5">
+    <h5 class="card-header text-center">@ViewData["Title"] </h5>
+
+    <form asp-action="Sua" method="post" class="w-50 mx-auto">
+        <div class="form-group">
+            <label for="MaKyLuat" class="font-weight-bold">Mã Kỷ Luật</label>
+            <input asp-for="MaKyLuat" class="form-control" placeholder="Nhập mã kỷ luật..." />
+            <span asp-validation-for="MaKyLuat" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="LyDoKyLuat" class="font-weight-bold">Lý Do</label>
+            <input asp-for="LyDoKyLuat" class="form-control" placeholder="Nhập lý do..." />
+            <span asp-validation-for="LyDoKyLuat" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label for="SoTienKyLuat" class="font-weight-bold">Tiền Phạt</label>
+            <input asp-for="SoTienKyLuat" class="form-control" placeholder="Nhập số tiền kỷ luật..." />
+            <span asp-validation-for="SoTienKyLuat" class="text-danger"></span>
+        </div>
+        <!-- Dùng grid layout cho 2 nút nằm cùng hàng -->
+        <div class="form-group ">
+            <button type="submit" class="btn btn-success me-2">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+

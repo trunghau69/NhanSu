@@ -1,0 +1,96 @@
+﻿@model Employee.Models.NhanVien
+
+@{
+    ViewData["Title"] = "Thêm Nhân Viên";
+}
+
+<div class="card">
+    <h5 class="card-header">@ViewData["Title"]</h5>
+    <div class="card-body">
+        <form asp-action="ThemMoi" enctype="multipart/form-data">
+            <div class="row">
+                <!-- Cột trái -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="MaNhanVien" class="form-label"></label>
+                        <input asp-for="MaNhanVien" class="form-control"  />
+                        <span asp-validation-for="MaNhanVien" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TenNhanVien" class="form-label"></label>
+                        <input asp-for="TenNhanVien" class="form-control" />
+                        <span asp-validation-for="TenNhanVien" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="GioiTinh" class="form-label"></label>
+                        <input asp-for="GioiTinh" class="form-control" />
+                        <span asp-validation-for="GioiTinh" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NoiO" class="form-label"></label>
+                        <input asp-for="NoiO" class="form-control" />
+                        <span asp-validation-for="NoiO" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="SDT" class="form-label"></label>
+                        <input asp-for="SDT" class="form-control" />
+                        <span asp-validation-for="SDT" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="HinhAnhNhanVien" class="form-label"></label>
+                        <input asp-for="HinhAnhNhanVien" accept="image/jpeg,image/gif,image/png" class="form-control" />
+                        <span asp-validation-for="HinhAnhNhanVien" class="text-danger"></span>
+                        <img src="~/uploads/@Model.HinhAnh" width="120px" />
+                    </div>
+                </div>
+
+                <!-- Cột phải -->
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label asp-for="ChucVuID" class="form-label"></label>
+                        <select asp-for="ChucVuID" class="form-control" asp-items="ViewBag.ChucVuID">
+                            <option value="">-- Chọn --</option>
+                        </select>
+                        <span asp-validation-for="ChucVuID" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ChuyenNganhID" class="form-label"></label>
+                        <select asp-for="ChuyenNganhID" class="form-control" asp-items="ViewBag.ChuyenNganhID">
+                            <option value="">-- Chọn chuyên ngành --</option>
+                        </select>
+                        <span asp-validation-for="ChuyenNganhID" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PhongBanId" class="form-label"></label>
+                        <select asp-for="PhongBanId" class="form-control" asp-items="ViewBag.PhongBanId">
+                            <option value="">-- Chọn --</option>
+                        </select>
+                        <span asp-validation-for="PhongBanId" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="TrinhDoID" class="form-label"></label>
+                        <select asp-for="TrinhDoID" class="form-control" asp-items="ViewBag.TrinhDoID">
+                            <option value="">-- Chọn --</option>
+                        </select>
+                        <span asp-validation-for="TrinhDoID" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nút hành động -->
+            <div class="d-flex justify-content-end mt-4">
+                <button type="submit" class="btn btn-primary me-2">
+                    <i class="fa-light fa-floppy-disk"></i> Thêm mới
+                </button>
+                <a asp-action="Index" class="btn btn-secondary">Quay về danh sách</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
